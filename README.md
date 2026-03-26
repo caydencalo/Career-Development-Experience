@@ -13,4 +13,4 @@ Building the website of the newly founded fraternity is more than a coding exper
 To make sure this project meets the 11.5-hour commitment and professional standards, I’ve made the following strategic decisions:
 - Recognizing that diverse communities will access information through smartphones, laptops, and more, I prioritize a responsive layout using CSS Flexbox and Grid. 
 - Ensure the site is inclusive for all users by utitlizing tags (<nav>, <article>, <section>) to improve screen-reader compatibility. This ensures the fraternity mission is findable and readable by everyone. 
-- Chose HTML/CSS architecture for speed and ease of maintenance so that future brothers of Alpha Theta Tau can update the “Brotherhood”, “Archive”, and “Events” without the need to learn complex frameworks
+- Chose HTML/CSS architecture for speed and ease of maintenance so that future brothers of Alpha Theta Tau can update the Brotherhood, Archive, and Events without the need to learn complex frameworks
