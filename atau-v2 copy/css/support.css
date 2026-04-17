@@ -1,0 +1,80 @@
+/* ============================================================
+  support.css file styles the donation box on the Support page including
+  the dark bordered panel, the One Time/Monthly/Yearly tabs, and the 
+  $1/$5/$10 and other buttons.
+   ============================================================ */
+
+/* ── Donate Layout ── */
+.donate-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ── Donation Panel ── */
+.donate-panel {
+  background: var(--ink-mid);
+  border: 1px solid rgba(63, 232, 176, 0.15);
+  padding: 2.5rem;
+}
+
+.donate-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--jade);
+  margin-bottom: 1.2rem;
+}
+
+/* Frequency tabs */
+.donate-type {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.type-btn {
+  background: transparent;
+  border: 1px solid rgba(143, 165, 165, 0.2);
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.type-btn:hover, .type-btn.active {
+  border-color: var(--jade);
+  color: var(--jade);
+}
+
+/* Amount buttons */
+.donate-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.donate-btn {
+  background: transparent;
+  border: 1px solid rgba(143, 165, 165, 0.25);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.donate-btn:hover, .donate-btn.active {
+  border-color: var(--jade);
+  color: var(--jade);
+}

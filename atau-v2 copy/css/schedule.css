@@ -1,0 +1,77 @@
+/* ============================================================
+  schedule.css file styles the Schedule page — the event cards with the 
+  green bar across the top, and the scholarship listings with the dollar 
+  amount on the right side.
+============================================================ */
+
+/* ── Event Cards Grid ── */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.event-card {
+  background: var(--ivory-light);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--jade);
+  padding: 1.75rem;
+}
+
+.event-date-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--jade-deep);
+  margin-bottom: 0.6rem;
+}
+
+.event-title {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  margin-bottom: 0.5rem;
+}
+
+.event-body {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.event-card a {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--jade-deep);
+  text-decoration: none;
+  border-bottom: 1px solid var(--jade-dark);
+}
+.event-card a:hover { color: var(--jade-dark); }
+
+/* ── Scholarship Cards ── */
+.sch-card {
+  background: var(--ivory-light);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.sch-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--jade-deep);
+  white-space: nowrap;
+  flex-shrink: 0;
+}

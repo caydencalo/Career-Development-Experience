@@ -1,0 +1,131 @@
+/* ============================================================
+  home.css file styles the first thing visitors see — the big "Alpha Theta 
+  Tau" title, the dark split-screen layout, the large faded letters in 
+  the background, and the stats panel on the right. 
+============================================================ */
+
+/* ── Hero Layout ── */
+.hero {
+  background: var(--ink);
+  min-height: calc(100vh - 62px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 3rem 5rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Hero Content ── */
+.hero-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--jade);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--jade);
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  color: var(--slate);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.8rem;
+  margin-top: 0.4rem;
+}
+
+.hero-body {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ── Hero Right Panel (decorative stats) ── */
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(63, 232, 176, 0.06) 0%, transparent 60%);
+  border-left: 1px solid rgba(63, 232, 176, 0.1);
+}
+
+.hero-glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(120px, 18vw, 220px);
+  font-weight: 700;
+  color: rgba(63, 232, 176, 0.08);
+  line-height: 1;
+  user-select: none;
+  letter-spacing: -0.04em;
+  position: absolute;
+}
+
+.hero-pillar-strip {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 3rem 2.5rem;
+  width: 100%;
+}
+
+.hero-stat {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(143, 165, 165, 0.18);
+}
+.hero-stat:last-child { border-bottom: none; }
+
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--jade);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.hero-stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}

@@ -1,0 +1,195 @@
+/* ============================================================
+  base.css file is where the site's core identity lives — the colors, fonts, 
+  and basic text styles that everything else is built on top of. If 
+  you wanted to change the jade green to a different color, you'd do 
+  it here and it would update everywhere automatically.
+   ============================================================ */
+   
+/* ── CSS Variables ── */
+:root {
+  --jade:        #3fe8b0;
+  --jade-dark:   #1dba88;
+  --jade-deep:   #0e6b4e;
+  --ivory:       #f5dfa0;
+  --ivory-light: #fdf5e0;
+  --ivory-pale:  #fffdf5;
+  --slate:       #8fa5a5;
+  --slate-dark:  #5c7878;
+  --slate-deep:  #2e4545;
+  --ink:         #111918;
+  --ink-mid:     #2c3a38;
+  --muted:       #5a6e6b;
+  --border:      rgba(143, 165, 165, 0.22);
+  --border-jade: rgba(63, 232, 176, 0.3);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ivory-pale);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* ── Skip Link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--jade);
+  color: var(--ink);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 0 0 4px 4px;
+}
+.skip-link:focus { top: 0; }
+
+/* ── Typography ── */
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+  font-weight: 700;
+  color: var(--ink-mid);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2rem;
+}
+
+h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink-mid);
+  margin-bottom: 0.4rem;
+}
+
+p { color: var(--muted); margin-bottom: 1rem; }
+
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--jade-deep);
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.section-tag::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--jade-deep);
+}
+
+.rule {
+  width: 40px;
+  height: 2px;
+  background: var(--jade);
+  margin: 1.2rem 0 1.8rem;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--jade);
+  color: var(--ink);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background: var(--jade-dark);
+  transform: translateY(-1px);
+  outline: 2px solid var(--jade);
+  outline-offset: 2px;
+}
+
+.btn-ghost {
+  display: inline-block;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover, .btn-ghost:focus {
+  border-color: var(--jade);
+  color: var(--jade);
+  outline: none;
+}
+
+/* ── Page System ── */
+.page { display: none; padding-top: 62px; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ── Section Utilities ── */
+.section { padding: 5rem 2rem; }
+.section-inner { max-width: 1060px; margin: 0 auto; }
+
+.section-dark { background: var(--ink); }
+.section-dark h2 { color: #fff; }
+.section-dark h3 { color: rgba(255, 255, 255, 0.9); }
+.section-dark p { color: rgba(255, 255, 255, 0.5); }
+.section-dark .section-tag { color: var(--jade); }
+.section-dark .section-tag::before { background: var(--jade); }
+
+/* ── Form Elements ── */
+.form-wrap {
+  background: var(--ivory-light);
+  border: 1px solid var(--border);
+  padding: 2.25rem;
+}
+
+.form-group { margin-bottom: 1rem; }
+
+label {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(143, 165, 165, 0.35);
+  padding: 0.7rem 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--jade-dark);
+}
+textarea { resize: vertical; min-height: 120px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }

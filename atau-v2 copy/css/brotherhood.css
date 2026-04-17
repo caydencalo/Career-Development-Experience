@@ -1,0 +1,319 @@
+/* ============================================================
+   brotherhood.css file manages the visual presentation of the 
+   Brotherhood section, transforming a standard member list into 
+   an interactive leadership gallery and historical record. It 
+   features a sophisticated "hover" system that brings member photos 
+   from grayscale to full color, alongside a grid-based expandable 
+   card mechanism that allows individual profiles to grow horizontally 
+   to reveal detailed academic and personal backgrounds. Additionally, 
+   the code styles a high-contrast roster and a structured timeline, 
+   ensuring that both current cabinet members and alumni are presented 
+   with a consistent, prestige-focused aesthetic that adapts seamlessly 
+   from desktop monitors to mobile screens.
+
+   Cabinet, Spotlight, Roster, Alumni, and Archive
+   ============================================================ */
+
+/* ── Cabinet Grid ── */
+.cabinet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+/* ── Brother Card ── */
+.brother-card {
+  background: var(--ink-mid);
+  border: 1px solid rgba(143, 165, 165, 0.15);
+  padding: 0;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.brother-card:hover { border-color: rgba(63, 232, 176, 0.4); }
+
+.bro-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(20%);
+  transition: filter 0.3s;
+}
+.brother-card:hover .bro-photo { filter: grayscale(0%); }
+
+.bro-info { padding: 1.25rem 1.35rem; }
+
+.bro-role {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--jade);
+  margin-bottom: 0.5rem;
+}
+
+.bro-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.15rem;
+}
+
+.bro-meta {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Full Roster ── */
+.roster {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  background: rgba(143, 165, 165, 0.12);
+}
+
+.roster-col { background: var(--ink-mid); padding: 1.75rem; }
+
+.roster-heading {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--jade);
+  border-bottom: 1px solid rgba(63, 232, 176, 0.2);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.roster-item {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.3rem 0;
+  line-height: 1.5;
+}
+
+.roster-item strong {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.82rem;
+}
+
+/* ── Alumni Entries ── */
+.alumni-entry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(143, 165, 165, 0.15);
+}
+.alumni-entry:last-child { border-bottom: none; margin-bottom: 0; }
+
+.alumni-entry.reverse { direction: rtl; }
+.alumni-entry.reverse > * { direction: ltr; }
+
+.alumni-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: rgba(63, 232, 176, 0.08);
+  line-height: 1;
+  margin-bottom: -1rem;
+}
+
+.alumni-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.alumni-degree {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--jade);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Archive Timeline ── */
+.timeline { margin-top: 3rem; }
+
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(143, 165, 165, 0.18);
+  margin-bottom: 2.5rem;
+}
+.timeline-entry:last-child { border-bottom: none; }
+
+.tl-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--jade);
+  text-align: right;
+  padding-top: 0.2rem;
+  line-height: 1.4;
+}
+
+.tl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.tl-body {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* ── Expandable Card — horizontal expansion ── */
+
+/*
+  Layout when closed:  [photo] [bro-info]
+  Layout when open:    [photo] [bro-info | bro-expanded]  ← spans full row
+  Height stays the same as the photo. Info and details sit side-by-side.
+*/
+
+.brother-card { cursor: pointer; }
+
+/* Open: span full row, 3-column grid — photo | info | expanded */
+.brother-card.open {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-rows: 1fr;
+  align-items: stretch;
+  border-color: rgba(63, 232, 176, 0.4);
+  overflow: hidden;
+}
+
+/* Photo: fixed height matching the card, no aspect-ratio override */
+.brother-card.open .bro-photo {
+  aspect-ratio: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(0%);
+  display: block;
+}
+
+/* Info column: right border separator, vertically centered */
+.brother-card.open .bro-info {
+  border-right: 1px solid rgba(63, 232, 176, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.75rem;
+}
+
+/* Expanded panel: sits in the 3rd column, same height as card */
+.bro-expanded {
+  display: none;
+}
+
+.brother-card.open .bro-expanded {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.75rem 2rem;
+  animation: expandIn 0.22s ease;
+}
+
+@keyframes expandIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Detail rows */
+.bro-expanded-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(143, 165, 165, 0.08);
+  margin: 0;
+}
+.bro-expanded-line:last-of-type { border-bottom: none; }
+
+.bro-expanded-line span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--jade);
+  flex-shrink: 0;
+  margin-right: 1.5rem;
+}
+
+/* Quote block */
+.bro-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.8;
+  border-left: 2px solid var(--jade);
+  padding-left: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+/* +/− indicator */
+.bro-info { position: relative; }
+.bro-info::after {
+  content: '+';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+  color: rgba(63, 232, 176, 0.4);
+  line-height: 1;
+  transition: color 0.2s;
+}
+.brother-card.open .bro-info::after {
+  content: '−';
+  color: var(--jade);
+}
+
+/* Responsive: fall back to stacked on small screens */
+@media (max-width: 700px) {
+  .brother-card.open {
+    grid-template-columns: 1fr;
+  }
+  .brother-card.open .bro-photo {
+    height: 260px;
+    min-height: unset;
+    max-height: unset;
+  object-position: center;
+  }
+  .brother-card.open .bro-info {
+    border-right: none;
+    border-bottom: 1px solid rgba(63, 232, 176, 0.12);
+  }
+}

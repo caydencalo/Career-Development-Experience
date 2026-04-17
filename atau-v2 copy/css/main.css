@@ -1,0 +1,27 @@
+/* ============================================================
+  main.css file loads all the other CSS files. It's the table of contents 
+  telling the browser to grab the style files and apply them all.
+
+   File map:
+     base.css         — variables, reset, typography, buttons, forms, section utils
+     nav.css          — fixed top nav, mobile hamburger
+     home.css         — hero section, stats panel
+     about.css        — AΘT page: about, history, 7 pillars, facts strip
+     archive.css       — Archive page: year tag, event entries, photo album
+     schedule.css     — Schedule page: event cards, scholarships
+     brotherhood.css  — Brotherhood page: cabinet, roster, alumni, archive timeline
+     support.css      — Support page: donation panel, refer form
+     footer.css       — footer
+     responsive.css   — all media queries (900px, 700px)
+   ============================================================ */
+   
+@import url('base.css');
+@import url('nav.css');
+@import url('home.css');
+@import url('about.css');
+@import url('archive.css');
+@import url('schedule.css');
+@import url('brotherhood.css');
+@import url('support.css');
+@import url('footer.css');
+@import url('responsive.css');

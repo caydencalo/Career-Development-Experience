@@ -1,0 +1,70 @@
+/* ============================================================
+   responsive.css file makes the website work on phones and tablets. 
+   It tells the browser if the screen is small, it stacks these 
+   columns on top of each other and on mobile, hides the nav links and 
+   shows the hamburger menu instead.
+   
+   Breakpoints: 900px (tablet), 700px (mobile)
+   ============================================================ */
+
+/* ── Tablet (max-width: 900px) ── */
+@media (max-width: 900px) {
+  /* Home */
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+
+  /* About */
+  .mission-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+  /* Brotherhood */
+  .alumni-entry { grid-template-columns: 1fr; }
+  .alumni-entry.reverse { direction: ltr; }
+  .roster { grid-template-columns: 1fr; }
+
+  /* Support */
+  .donate-layout { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Mobile (max-width: 700px) ── */
+@media (max-width: 700px) {
+  /* Navigation */
+  nav { padding: 0 1.25rem; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 62px; left: 0; right: 0;
+    background: var(--ink);
+    flex-direction: column;
+    border-top: 1px solid rgba(63, 232, 176, 0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    height: auto;
+    line-height: 1;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .nav-cta { display: none; }
+  .nav-toggle { display: block; }
+
+  /* Home */
+  .hero-left { padding: 3rem 1.5rem; }
+
+  /* Schedule */
+  .schedule-grid { grid-template-columns: 1fr; }
+
+  /* Brotherhood */
+  .cabinet-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Forms */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr; }
+
+  /* Global section padding */
+  .section { padding: 3rem 1.25rem; }
+}

@@ -1,0 +1,1023 @@
+<!-- ════════════════════════════════════════════════════════
+  index.html file serves as the structural foundation for a Single Page Application (SPA)
+  showcasing the Alpha Theta Tau fraternity’s mission, history, and community impact at WSU. 
+  It utilizes a section-based layout and interactive components—like image carousels and 
+  lightboxes—to present founding class archives and leadership rosters in a modern, accessible format. 
+  By integrating semantic tagging and accessibility features, the code ensures the fraternity’s focus 
+  on men's mental health and brotherhood is communicated clearly across all devices.
+    ════════════════════════════════════════════════════════ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpha Theta Tau — Per Aspera Ad Astra</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles (main.css imports all page-specific files) -->
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ── LIGHTBOX OVERLAY ── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo viewer">&#x2715;</button>
+    <button class="lightbox-prev" onclick="lightboxPrev(event)" aria-label="Previous photo">&#8592;</button>
+    <button class="lightbox-next" onclick="lightboxNext(event)" aria-label="Next photo">&#8594;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════════════════════ -->
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-brand" onclick="showPage('home')" aria-label="Alpha Theta Tau home">ΑΘΤ</a>
+
+    <button
+      class="nav-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      onclick="toggleNav(this)"
+    >☰</button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#" onclick="showPage('about')">AΘT</a></li>
+      <li><a href="#" onclick="showPage('archive')">Archive</a></li>
+      <li><a href="#" onclick="showPage('schedule')">Schedule</a></li>
+      <li><a href="#" onclick="showPage('brotherhood')">Brotherhood</a></li>
+      <li><a href="#" onclick="showPage('support')">Support</a></li>
+    </ul>
+
+    <a href="#join-form" class="btn">JOIN AOT</a> <!-- (NEW!) -->
+    <a href="#" class="nav-cta" onclick="showPage('support')">Push for Change</a>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       MAIN CONTENT
+       ════════════════════════════════════════════════════════ -->
+  <main id="main-content">
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PAGE: HOME
+         ══════════════════════════════════════════════════════ -->
+    <article class="page active" id="page-home" aria-labelledby="home-title">
+
+      <!-- Hero -->
+      <section class="hero" aria-label="Welcome">
+        <div class="hero-left">
+          <p class="hero-eyebrow">Washington State University · MGC</p>
+          <h1 id="home-title">Alpha<br/>Theta<br/>Tau</h1>
+          <p class="hero-subtitle">Per Aspera Ad Astra</p>
+          <p class="hero-body">
+            A Multicultural Greek fraternity at WSU rooted in a mission that extends far beyond
+            our chapter walls. We stand at the forefront of championing men's mental health and
+            uniting our communities.
+          </p>
+          <div class="hero-actions">
+            <a href="#" class="btn-primary" onclick="showPage('about')">Join ΑΘΤ</a>
+            <a href="#" class="btn-ghost" onclick="showPage('brotherhood')">Meet the Brothers</a>
+          </div>
+        </div>
+
+        <!-- Decorative stats panel — hidden on mobile -->
+        <div class="hero-right" aria-hidden="true">
+          <div class="hero-glyph">ΑΘΤ</div>
+          <div class="hero-pillar-strip">
+            <div class="hero-stat">
+              <div class="hero-stat-num">Nov 3</div>
+              <div class="hero-stat-label">Founded, 2025</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">13</div>
+              <div class="hero-stat-label">Founding Brothers</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">7</div>
+              <div class="hero-stat-label">Pillars of Brotherhood</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">WSU</div>
+              <div class="hero-stat-label">Pullman, Washington</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Refer / Social Preview -->
+      <section class="section" style="background: var(--ivory-light);" aria-labelledby="refer-heading">
+        <div class="section-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+          <div>
+            <p class="section-tag">Grow the Brotherhood</p>
+            <h2 id="refer-heading">Strengthen the future of ATAU</h2>
+            <div class="rule" role="presentation"></div>
+            <p>Know someone who would make a great candidate? We'll reach out to him, whether he's currently attending or is planning to.</p>
+            <a href="#" class="btn-primary" onclick="showPage('support')" style="background: var(--ink); color: var(--jade); margin-top: 0.5rem; display: inline-block;">Refer an ATAU</a>
+          </div>
+          <div style="background: var(--ink); padding: 2.5rem;">
+            <p class="section-tag" style="color: var(--jade);">Follow Us</p>
+            <h3 style="color: #fff; font-size: 2rem; margin-bottom: 0.5rem;">#ATAU</h3>
+            <p style="color: rgba(255,255,255,0.45); font-size: 0.9rem;">Follow along as we build something greater than ourselves.</p>
+          </div>
+        </div>
+      </section>
+
+    </article><!-- /#page-home -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PAGE: AΘT (About, History, Pillars, Facts)
+         ══════════════════════════════════════════════════════ -->
+    <article class="page" id="page-about" aria-labelledby="about-title">
+
+      <!-- About -->
+      <section class="section section-dark" aria-labelledby="about-title">
+        <div class="section-inner">
+          <p class="section-tag">About</p>
+          <h2 id="about-title">Alpha Theta Tau</h2>
+          <div class="rule" role="presentation"></div>
+          <div style="max-width: 680px;">
+            <p>
+              Alpha Theta Tau was founded on November 3rd, 2025, when thirteen men came together
+              at Washington State University in Pullman, Washington, to build something greater
+              than themselves.
+            </p>
+            <p>
+              We have established the first chapter of Alpha Theta Tau with a mission of uplifting
+              communities, championing men's mental health, and creating a lasting, positive
+              environment for every generation.
+            </p>
+            <p>
+              We believe that brotherhood built on authenticity makes better men, better leaders,
+              better advocates, and better members of the communities we serve. Alpha Theta Tau
+              is not just a chapter — it is a movement, and it is only just beginning.
+            </p>
+            
+            <a href="#join-form" class="btn">JOIN AOT</a> <!-- (NEW!) -->
+          </div>
+          <div style="margin-top: 2rem;">
+            <a href="#" class="btn-primary" onclick="showPage('support')">Join ΑΘΤ</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FORM SECTION (NEW!) ================= -->
+        <section id="join-form" class="form-section">
+          <h2>POTENTIAL MEMBER INTEREST FORM</h2>
+          <p class="subtitle">
+            Submit your information and it will be forwarded to the appropriate chapter.
+          </p>
+
+          <form id="interestForm">
+
+            <div class="row">
+              <div class="input-group">
+                <label>First Name *</label>
+                <input type="text" required>
+              </div>
+              <div class="input-group">
+                <label>Last Name *</label>
+                <input type="text" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-group">
+                <label>Cell Phone *</label>
+                <input type="tel" required>
+              </div>
+              <div class="input-group">
+                <label>Email *</label>
+                <input type="email" required>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>University Attending *</label>
+              <select required>
+                <option value="">Select University</option>
+                <option>Washington State University</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="row">
+              <div class="input-group">
+                <label>Hometown</label>
+                <input type="text">
+              </div>
+              <div class="input-group">
+                <label>State</label>
+                <input type="text">
+              </div>
+              <div class="input-group">
+                <label>High School Grad Year</label>
+                <input type="number">
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>High School Involvement, Achievements, Other Notes</label>
+              <textarea rows="5"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">SUBMIT</button>
+          </form>
+        </section>
+
+        </body>
+        </html>
+
+      <!-- History -->
+      <section class="section" style="background: var(--ivory-light);" aria-labelledby="history-heading">
+        <div class="section-inner mission-grid">
+          <div>
+            <p class="section-tag">History</p>
+            <h2 id="history-heading">Where it began</h2>
+            <div class="rule" role="presentation"></div>
+            <p>
+              It all started with five men — Kobe Bui, John Conlan, Nicolas DeJesus, Anthony Mackay,
+              and Hank Corrion — who shared their own personal battles with mental health. Coming
+              from different Asian-American backgrounds, they arrived at the same conclusion: that
+              the experiences that had shaped them did not have to break the men who came after them.
+            </p>
+            <p>They chose to turn their pain into purpose.</p>
+          </div>
+          <div>
+            <p class="section-tag" style="color: var(--jade-deep);">Philanthropy</p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">To stand for men's mental health</h3>
+            <p>
+              To build the communities that make that possible. Every program, every event, every
+              brotherhood bond is in service of this mission.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 Pillars -->
+      <section class="section section-dark" aria-labelledby="pillars-heading">
+        <div class="section-inner">
+          <p class="section-tag">Our Values</p>
+          <h2 id="pillars-heading">The 7 Pillars</h2>
+          <div class="rule" role="presentation"></div>
+
+          <div class="pillars-wheel" role="list" aria-label="Seven pillars of Alpha Theta Tau">
+            <article class="pillar-cell" role="listitem">
+              <div class="pillar-name">Ambition</div>
+              <p class="pillar-desc">Strive for success individually and as a collective.</p>
+            </article>
+            <article class="pillar-cell" role="listitem">
+              <div class="pillar-name">Academics</div>
+              <p class="pillar-desc">Push for academic excellence in all pursuits.</p>
+            </article>
+            <article class="pillar-cell" role="listitem">
+              <div class="pillar-name">Grit</div>
+              <p class="pillar-desc">Enforce a deterministic drive toward their goals.</p>
+            </article>
+            <article class="pillar-cell" role="listitem">
+              <div class="pillar-name">Authenticity</div>
+              <p class="pillar-desc">Stay true to others and themselves at all times.</p>
+            </article>
+
+            <article class="pillar-cell" role="listitem">
+              <div class="pillar-name">Community</div>
+              <p class="pillar-desc">Help foster and uplift every community they touch.</p>
+            </article>
+            <article class="pillar-cell" role="listitem">
+              <div class="pillar-name">Leadership</div>
+              <p class="pillar-desc">Lead by example with care and attentiveness.</p>
+            </article>
+            <article class="pillar-cell" role="listitem">
+              <div class="pillar-name">Mindfulness</div>
+              <p class="pillar-desc">Practice mindfulness of others and themselves.</p>
+            </article>
+          </div>
+
+          <!-- Facts -->
+          <div class="facts-strip" role="list" aria-label="Chapter facts">
+            <div class="fact-cell" role="listitem">
+              <div class="fact-label">Symbols</div>
+              <p class="fact-value">Juniper Bonsai Tree, Manta Ray</p>
+            </div>
+            <div class="fact-cell" role="listitem">
+              <div class="fact-label">Nickname</div>
+              <p class="fact-value">ATAU, Members of ATAU</p>
+            </div>
+            <div class="fact-cell" role="listitem">
+              <div class="fact-label">Headquarters</div>
+              <p class="fact-value">Pullman, WA</p>
+            </div>
+            <div class="fact-cell" role="listitem">
+              <div class="fact-label">Colors</div>
+              <p class="fact-value">Jade Green, Ivory, Slate</p>
+            </div>
+            <div class="fact-cell" role="listitem">
+              <div class="fact-label">Initiated Members</div>
+              <p class="fact-value">13</p>
+            </div>
+            <div class="fact-cell" role="listitem">
+              <div class="fact-label">Motto</div>
+              <p class="fact-value">Per aspera ad astra</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </article><!-- /#page-about -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PAGE: ARCHIVE
+         ══════════════════════════════════════════════════════ -->
+    <article class="page" id="page-archive" aria-labelledby="archive-title">
+
+      <section class="section" style="background: var(--ivory-light);" aria-labelledby="archive-title">
+        <div class="section-inner">
+
+          <p class="section-tag">AΘT</p>
+          <h2 id="archive-title">Archive</h2>
+          <div class="rule" role="presentation"></div>
+
+          <!-- Year tag -->
+          <div class="archive-year-tag">2025–2026</div>
+
+          <!-- FA25 Founding Class Unveiling -->
+          <div class="archive-entry-wrap" id="fa25-wrap">
+
+            <!-- Entry: photos + description -->
+            <div class="archive-entry">
+              <div class="archive-entry-img">
+                <div class="carousel" id="carousel-fa25" aria-label="FA25 Founding Class Unveiling photos">
+                  <div class="carousel-track">
+                    <div class="carousel-slide active">
+                      <img src="images/archive/F25FoundingClassUnveil/FOUNDING.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="FA25 Founding Class Unveiling" />
+                    </div>
+                    <div class="carousel-slide">
+                      <img src="images/archive/F25FoundingClassUnveil/FOUNDING1.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="FA25 Founding Class Unveiling" />
+                    </div>
+                    <div class="carousel-slide">
+                      <img src="images/archive/F25FoundingClassUnveil/FOUNDING2.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="FA25 Founding Class Unveiling" />
+                    </div>
+                    <div class="carousel-slide">
+                      <img src="images/archive/F25FoundingClassUnveil/FOUNDING3.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="FA25 Founding Class Unveiling" />
+                    </div>
+                    <div class="carousel-slide">
+                      <img src="images/archive/F25FoundingClassUnveil/FOUNDING4.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="FA25 Founding Class Unveiling" />
+                    </div>
+                    <div class="carousel-slide">
+                      <img src="images/archive/F25FoundingClassUnveil/FOUNDING5.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="FA25 Founding Class Unveiling" />
+                    </div>
+                    <div class="carousel-slide">
+                      <img src="images/archive/F25FoundingClassUnveil/FOUNDING6.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="FA25 Founding Class Unveiling" />
+                    </div>
+                  </div>
+                  <button class="carousel-btn carousel-btn-prev" onclick="carouselPrev('carousel-fa25')" aria-label="Previous photo">&#8592;</button>
+                  <button class="carousel-btn carousel-btn-next" onclick="carouselNext('carousel-fa25')" aria-label="Next photo">&#8594;</button>
+                  <div class="carousel-dots" id="dots-carousel-fa25"></div>
+                </div>
+              </div>
+              <div class="archive-entry-body">
+                <h3 class="archive-entry-title">FA25 Founding Class Unveiling</h3>
+                <p>On November 17th, the Alpha Theta Tau Founding Class was unveiled at Washington State University within the doors of the Todd Auditorium. Thirteen men unified together made their presence known within the MGC community, establishing the very first chapter of Alpha Theta Tau.</p>
+                <p>United with the mission of uplifting every community they touch, to champion men's mental health with courage and conviction, and to light a path so bright that every man who comes after them will never have to walk in the dark alone.</p>
+                <a href="#" class="archive-see-more" onclick="showExtras(event, 'fa25-extras')">See More</a>
+              </div>
+            </div>
+
+            <!-- Extras: expands below, hidden by default -->
+            <div class="archive-extras-panel" id="fa25-extras" style="display:none;">
+              <h4 class="archive-extras-title">Extras</h4>
+              <!-- Row 1: first 3 videos -->
+              <div class="archive-extras-row" style="display:flex; flex-direction:row; flex-wrap:nowrap; gap:1rem; align-items:flex-start;">
+                <div class="extras-video-item">
+                  <video class="extras-video" controls preload="none">
+                    <source src="videos/F25FOUNDINGUNVEILING/FOUNDERSUNVEILTEASER.mp4" type="video/mp4" />
+                    Your browser does not support video.
+                  </video>
+                </div>
+                <div class="extras-video-item">
+                  <video class="extras-video" controls preload="none">
+                    <source src="videos/F25FOUNDINGUNVEILING/FOUNDERSUNVEILTEASER2.mp4" type="video/mp4" />
+                    Your browser does not support video.
+                  </video>
+                </div>
+                <div class="extras-video-item">
+                  <video class="extras-video" controls preload="none">
+                    <source src="videos/F25FOUNDINGUNVEILING/FOUNDERSUNVEILTEASER3.mp4" type="video/mp4" />
+                    Your browser does not support video.
+                  </video>
+                </div>
+              </div>
+              <!-- Row 2: 4th video -->
+              <div class="archive-extras-row" style="display:flex; flex-direction:row; flex-wrap:nowrap; gap:1rem; align-items:flex-start; margin-top:1rem;">
+                <div class="extras-video-item">
+                  <video class="extras-video" controls preload="none">
+                    <source src="videos/F25FOUNDINGUNVEILING/FOUNDERSUNVEILTEASER4.mp4" type="video/mp4" />
+                    Your browser does not support video.
+                  </video>
+                </div>
+                <!-- empty spacers to keep consistent width -->
+                <div class="extras-video-item" style="background:transparent; border:none;"></div>
+                <div class="extras-video-item" style="background:transparent; border:none;"></div>
+              </div>
+              <button class="archive-extras-back" onclick="hideExtras(event, 'fa25-extras')">&#8593; Back</button>
+            </div>
+
+          </div>
+
+          <!-- SP26 Ube Cheesecake Fundraiser -->
+          <div class="archive-entry archive-entry-reverse">
+            <div class="archive-entry-body">
+              <h3 class="archive-entry-title">SP26 Ube Cheesecake Bar Fundraiser</h3>
+              <p>Alpha Theta Tau launched its very first fundraising event, led by Fundraising Chair Marshall Nguyen, and the response from the WSU community was nothing short of incredible. Fellow Cougs and organizations came out supporting our chapter by purchasing our ube cheesecakes and spreading the word to those around them.</p>
+              <p>The support was felt deeply — across all three days of tabling as we sold out every single time. To everyone who showed up, bought our very own ube cheesecake bar, or shared our story: thank you. Your support means the world to us and fuels everything we are working to build.</p>
+            </div>
+            <div class="archive-entry-img">
+              <div class="carousel" id="carousel-ube" aria-label="Ube Cheesecake Fundraiser photos">
+                <div class="carousel-track">
+                  <div class="carousel-slide active">
+                    <img src="images/archive/S26UbeCheeseBarFundraiser/UBEFUNDRAISER.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="SP26 Ube Cheesecake Bar Fundraiser" />
+                  </div>
+                  <div class="carousel-slide">
+                    <img src="images/archive/S26UbeCheeseBarFundraiser/UBEFUNDRAISER2.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="SP26 Ube Cheesecake Bar Fundraiser" />
+                  </div>
+                  <div class="carousel-slide">
+                    <img src="images/archive/S26UbeCheeseBarFundraiser/UBEFUNDRAISER3.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="SP26 Ube Cheesecake Bar Fundraiser" />
+                  </div>
+                </div>
+                <button class="carousel-btn carousel-btn-prev" onclick="carouselPrev('carousel-ube')" aria-label="Previous photo">&#8592;</button>
+                <button class="carousel-btn carousel-btn-next" onclick="carouselNext('carousel-ube')" aria-label="Next photo">&#8594;</button>
+                <div class="carousel-dots" id="dots-carousel-ube"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Photo Album -->
+      <section class="section section-dark" aria-labelledby="album-heading">
+        <div class="section-inner">
+          <h2 id="album-heading" style="text-align:center; font-size: clamp(1.4rem,3vw,2rem); letter-spacing:0.08em; text-transform:uppercase;">Photo Album 2025–2026</h2>
+          <div class="rule" style="margin: 1rem auto 2rem;"></div>
+
+          <!-- Album Carousel -->
+          <div class="album-carousel-wrap">
+            <div class="carousel album-carousel" id="carousel-album" aria-label="Photo Album 2025-2026">
+              <div class="carousel-track">
+
+                <div class="carousel-slide active">
+                  <img src="images/Archive/PHOTOALBUM/TANABATA.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="JSA Tanabata 2026" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/Archive/PHOTOALBUM/CULTURESHOCK.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="APASC Culture Shock 2026" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/Archive/PHOTOALBUM/HMX.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="VSA Huong Mua Xuan 2026" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/Archive/PHOTOALBUM/FCN.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="FASA Filipino Cultural Night 2026" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/Archive/PHOTOALBUM/UNVEIL.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="Alpha Theta Tau Founding Class Unveil Fall 2025" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="images/Archive/PHOTOALBUM/HOIKE.png" class="carousel-photo" onclick="openLightbox(this)" style="cursor:zoom-in;" alt="Kaiaulu Iimi Hawaii Hoike 2026" />
+                </div>
+
+              </div>
+              <button class="carousel-btn carousel-btn-prev" onclick="carouselPrev('carousel-album')" aria-label="Previous photo">&#8592;</button>
+              <button class="carousel-btn carousel-btn-next" onclick="carouselNext('carousel-album')" aria-label="Next photo">&#8594;</button>
+              <div class="carousel-dots" id="dots-carousel-album"></div>
+            </div>
+
+            <!-- Per-slide captions -->
+            <div class="album-captions" id="album-captions">
+              <p class="album-caption active" data-index="0">JSA's Tanabata 2026 — Congratulations Ren on hosting JSA's very first Japanese Student Association Cultural Event!</p>
+              <p class="album-caption" data-index="1">APASC Culture Shock 2026 — Congratulations Nic &amp; Isaac on hosting APASC's widely diverse cultural event for the Asian Pacific American Student Coalition!</p>
+              <p class="album-caption" data-index="2">VSA's HƯƠNG MÙA XUÂN 2026 — Congratulations Anthony &amp; Marshall on hosting a beautiful event for the Vietnamese Student Association!</p>
+              <p class="album-caption" data-index="3">FASA's Filipino Cultural Night 2026 — Congratulations Nic, Cayden, &amp; Mason on hosting a memorable night full of games, tasty food, and performances for the Filipino American Student Association.</p>
+              <p class="album-caption" data-index="4">Alpha Theta Tau Founding Class Unveil Fall 2025 — Thank you for attending and showing support to a new generation of men supporting and standing up towards mental health. We can't wait for the future to uplift the community.</p>
+              <p class="album-caption" data-index="5">Kaiāulu ʻIʻimi Hawaiʻi Hoʻike 2026 — On behalf of Alpha Theta Tau, we'd like to say thank you for hosting a stunning cultural event displaying activities, serving ono Hawaiian &amp; local food, and hula performances.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </article><!-- /#page-archive -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PAGE: SCHEDULE (News & Scholarships)
+         ══════════════════════════════════════════════════════ -->
+    <article class="page" id="page-schedule" aria-labelledby="schedule-title">
+
+      <!-- Events -->
+      <section class="section" aria-labelledby="schedule-title">
+        <div class="section-inner">
+          <p class="section-tag">News Spring '26</p>
+          <h2 id="schedule-title">Schedule</h2>
+          <div class="rule" role="presentation"></div>
+
+          <div class="schedule-grid" role="list">
+            <article class="event-card" role="listitem">
+              <div class="event-date-tag">Jan — Brother of the Month</div>
+              <h3 class="event-title">Kenji Shannon — Kaizen</h3>
+              <p class="event-body">Congratulations to #12 Kenji "Kaizen" Shannon on being awarded January's Brother of the Month. Kenji has been highly focused on his role as New Member Educator, fully attentive, and leads with kindness.</p>
+              <a href="#">Learn More</a>
+            </article>
+
+            <article class="event-card" role="listitem">
+              <div class="event-date-tag">Feb 10 / 12 / 18 — Fundraiser</div>
+              <h3 class="event-title">Ube Cheesecake Bar Fundraiser</h3>
+              <p class="event-body">Come and support Alpha Theta Tau by purchasing our Ube Cheesecake bars, handmade by ATAU. Pre-order forms available prior to tabling. We will be selling at the WSU CUB Spine. Purchase yours before we run out.</p>
+              <a href="#">Learn More</a>
+            </article>
+
+            <article class="event-card" role="listitem">
+              <div class="event-date-tag">Mar 27 — Community Event</div>
+              <h3 class="event-title">Origami Mental Health Event</h3>
+              <p class="event-body">Write your problems, anxieties, and stresses on paper and fold them into beautiful origami pieces with the brothers of ATAU. Located in WSU CUE 219 at 6 PM — together we can turn what you carry into something you can let go of.</p>
+              <a href="#">Learn More</a>
+            </article>
+
+            <article class="event-card" role="listitem">
+              <div class="event-date-tag">May 9 — Commencement</div>
+              <h3 class="event-title">Commencement Celebration</h3>
+              <p class="event-body">Join the ATAU brothers as we celebrate Nicolas De Jesus and John Conlan completing their undergraduate degrees. Held at Beasley Coliseum on May 9. Let's wish our graduating seniors the best in all endeavors they pursue.</p>
+              <a href="#">Learn More</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scholarships -->
+      <section class="section" style="background: var(--ivory-light);" aria-labelledby="scholarships-heading">
+        <div class="section-inner">
+          <p class="section-tag">Financial Aid</p>
+          <h2 id="scholarships-heading">Scholarships</h2>
+          <div class="rule" role="presentation"></div>
+
+          <div style="display: flex; flex-direction: column; gap: 1px; background: var(--border); margin-top: 1.5rem;" role="list">
+            <article class="sch-card" role="listitem">
+              <div>
+                <h3 style="font-size: 1rem; margin-bottom: 0.3rem;">WSU General Scholarship</h3>
+                <p class="event-date-tag" style="font-size: 0.65rem; margin: 0;">Deadline: Jan 31 · Priority registration</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 0;">Submit your Washington State University General Scholarship Application. Priority registration deadline is Jan 31 for consideration.</p>
+              </div>
+              <a href="#" class="btn-primary" style="font-size: 0.65rem; padding: 0.6rem 1.2rem; white-space: nowrap; align-self: flex-start;">Learn More</a>
+            </article>
+
+            <article class="sch-card" role="listitem">
+              <div>
+                <h3 style="font-size: 1rem; margin-bottom: 0.3rem;">Fall MGC Academic Excellence Award</h3>
+                <p class="event-date-tag" style="font-size: 0.65rem; margin: 0;">MGC Members in good academic standing</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 0;">Are you a Multicultural Greek Council member in good academic standing? You are eligible to receive $1,500 for the academic year.</p>
+              </div>
+              <div class="sch-amount">$1,500</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </article><!-- /#page-schedule -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PAGE: BROTHERHOOD (Cabinet, Spotlight, Roster, Alumni, Archive)
+         ══════════════════════════════════════════════════════ -->
+    <article class="page" id="page-brotherhood" aria-labelledby="brotherhood-title">
+
+      <!-- Cabinet -->
+      <section class="section section-dark" aria-labelledby="brotherhood-title">
+        <div class="section-inner">
+          <p class="section-tag">Brotherhood</p>
+          <h2 id="brotherhood-title">2025–2026 Cabinet</h2>
+          <div class="rule" role="presentation"></div>
+
+          <div class="cabinet-grid" role="list">
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/KobeBui.jpg" alt="Kobe Bui" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">President</div>
+                <div class="bro-name">Kobe "Wukong" Bui</div>
+                <p class="bro-meta">#2 &middot; Founding Father<br/>Senior &middot; Mechanical Engineering<br/>Hometown: Boise, ID</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Mechanical Engineering</p>
+                <p class="bro-expanded-line"><span>Class</span>Senior</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Father</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Boise, ID</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/JohnConlan.jpg" alt="John Conlan" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Vice President / Co-Educator</div>
+                <div class="bro-name">John "&#3650;&#3634;&#3619;&#3634;&#3607;&#3636;&#3614;&#3618;&#3660;" Conlan</div>
+                <p class="bro-meta">#3 &middot; Founding Father<br/>Senior &middot; Environmental Science<br/>Hometown: Mira Mesa, CA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Environmental Science</p>
+                <p class="bro-expanded-line"><span>Minor</span>Forestry &amp; GIS</p>
+                <p class="bro-expanded-line"><span>Class</span>Senior</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Father</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Mira Mesa, CA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/NicDejesus.jpg" alt="Nicolas DeJesus" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Secretary</div>
+                <div class="bro-name">Nicolas "Hephaeston" DeJesus</div>
+                <p class="bro-meta">#4 &middot; Founding Father<br/>Senior &middot; Architecture<br/>Hometown: Renton, WA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Architecture</p>
+                <p class="bro-expanded-line"><span>Continuing</span>M.Arch at WSU</p>
+                <p class="bro-expanded-line"><span>Class</span>Senior</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Father</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Renton, WA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/MasonPanelo.jpg" alt="Mason Panelo" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Treasurer</div>
+                <div class="bro-name">Mason "Divino" Panelo</div>
+                <p class="bro-meta">#14 &middot; Founding Class<br/>Senior &middot; Accounting &amp; MIS<br/>Hometown: Renton, WA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Accounting &amp; MIS</p>
+                <p class="bro-expanded-line"><span>Class</span>Senior</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Class</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Renton, WA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/CaydenCalo.jpg" alt="Cayden Calo" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Risk Manager / Academic Chair</div>
+                <div class="bro-name">Cayden "Koa" Calo</div>
+                <p class="bro-meta">#8 &middot; Founding Class<br/>Senior &middot; Computer Science<br/>Hometown: Renton, WA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Computer Science</p>
+                <p class="bro-expanded-line"><span>Class</span>Senior</p>
+                <p class="bro-expanded-line"><span>Line</span>URRR HIM LINE</p>
+                <p class="bro-expanded-line"><span>Ethnicity</span>Filipino</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Renton, WA</p>
+                <blockquote class="bro-quote">"Growing up in a Filipino household as a second-generation college student, I watched my family sacrifice everything to give me opportunities they never had... founding Alpha Theta Tau gave that weight a purpose. I realized the burden I carried was not mine alone — it was the quiet struggle of countless men from immigrant and ethnic backgrounds, raised to push forward in silence. I want to build a brotherhood where men could be driven and vulnerable, ambitious and honest about their pain."</blockquote>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/AnthonyMackay.jpg" alt="Anthony Mackay" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Social Chair</div>
+                <div class="bro-name">Anthony "Blueprint" Mackay</div>
+                <p class="bro-meta">#5 &middot; Founding Father<br/>Junior &middot; Entrepreneurship<br/>Hometown: Dallas, PA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Entrepreneurship</p>
+                <p class="bro-expanded-line"><span>Class</span>Junior</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Father</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Dallas, PA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/HankCorrion.jpg" alt="Hank Corrion" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Standards / Programming / Historian</div>
+                <div class="bro-name">Hank "The Tank" Corrion</div>
+                <p class="bro-meta">#6 &middot; Founding Father<br/>Senior &middot; Computer Science<br/>Hometown: Burlington, WA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Computer Science</p>
+                <p class="bro-expanded-line"><span>Class</span>Senior</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Father</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Burlington, WA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/MarshallNguyen.jpg" alt="Marshall Nguyen" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Fundraising Chair</div>
+                <div class="bro-name">Marshall Nguyen</div>
+                <p class="bro-meta">#9 &middot; Founding Class<br/>Sophomore &middot; Architecture<br/>Hometown: Olympia, WA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Architecture</p>
+                <p class="bro-expanded-line"><span>Class</span>Sophomore</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Class</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Olympia, WA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/ConnorEvans.jpg" alt="Connor Evans" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Philanthropy Chair</div>
+                <div class="bro-name">Connor "Kayuktak" Evans</div>
+                <p class="bro-meta">#10 &middot; Founding Class<br/>Junior &middot; Environmental Science<br/>Hometown: Utqiagvik, AK</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Environmental Science</p>
+                <p class="bro-expanded-line"><span>Class</span>Junior</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Class</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Utqiagvik, AK</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/KenjiShannon.jpg" alt="Kenji Shannon" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Co-Educator</div>
+                <div class="bro-name">Kenji "Kaizen" Shannon</div>
+                <p class="bro-meta">#12 &middot; Founding Class<br/>Sophomore &middot; Mechanical Engineering<br/>Hometown: Renton, WA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Mechanical Engineering</p>
+                <p class="bro-expanded-line"><span>Class</span>Sophomore</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Class</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Renton, WA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/MichaelWatson.jpg" alt="Michael Watson" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Recruitment Chair</div>
+                <div class="bro-name">Michael "Love" Watson</div>
+                <p class="bro-meta">#13 &middot; Founding Class<br/>Sophomore &middot; Computer Science<br/>Hometown: Victorville, CA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Computer Science</p>
+                <p class="bro-expanded-line"><span>Class</span>Sophomore</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Class</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Victorville, CA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/IssacSanchez.jpg" alt="Isaac Sanchez" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">Formals Chair</div>
+                <div class="bro-name">Isaac "Kusinero" Sanchez</div>
+                <p class="bro-meta">#7 &middot; Founding Class<br/>Sophomore &middot; MIS &amp; Data Analytics<br/>Hometown: San Francisco, CA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>MIS &amp; Data Analytics</p>
+                <p class="bro-expanded-line"><span>Class</span>Sophomore</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Class</p>
+                <p class="bro-expanded-line"><span>Hometown</span>San Francisco, CA</p>
+              </div>
+            </article>
+            <article class="brother-card" role="listitem" onclick="toggleCard(this)" tabindex="0" aria-expanded="false">
+              <img src="images/HeadShots/RenSchlosser.jpg" alt="Ren Schlosser" class="bro-photo" />
+              <div class="bro-info">
+                <div class="bro-role">MGC Delegate</div>
+                <div class="bro-name">Ren "Golden Boy" Schlosser</div>
+                <p class="bro-meta">#11 &middot; Founding Class<br/>Sophomore &middot; Electrical Engineering<br/>Hometown: Tri Cities, WA</p>
+              </div>
+              <div class="bro-expanded">
+                <p class="bro-expanded-line"><span>Major</span>Electrical Engineering</p>
+                <p class="bro-expanded-line"><span>Class</span>Sophomore</p>
+                <p class="bro-expanded-line"><span>Line</span>Founding Class</p>
+                <p class="bro-expanded-line"><span>Hometown</span>Tri Cities, WA</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roster -->
+      <section class="section section-dark" style="padding-top: 0;" aria-labelledby="roster-heading">
+        <div class="section-inner">
+          <h2 id="roster-heading" style="font-size: 1.6rem; margin-bottom: 1.5rem;">ATAU Brothers</h2>
+          <div class="roster" role="list">
+            <div class="roster-col" role="listitem">
+              <div class="roster-heading">Founding Fathers</div>
+              <div class="roster-item"><strong>#2 Kobe "Wukong" Bui</strong></div>
+              <div class="roster-item"><strong>#3 John "ธาราทิพย์" Conlan</strong></div>
+              <div class="roster-item"><strong>#4 Nicolas "Hephaeston" DeJesus</strong></div>
+              <div class="roster-item"><strong>#5 Anthony "Blueprint" Mackay</strong></div>
+              <div class="roster-item"><strong>#6 Hank "The Tank" Corrion</strong></div>
+            </div>
+            <div class="roster-col" role="listitem">
+              <div class="roster-heading">Founding Brothers</div>
+              <div class="roster-item"><strong>#7 Isaac "Kusinero" Sanchez</strong></div>
+              <div class="roster-item"><strong>#8 Cayden "Koa" Calo</strong></div>
+              <div class="roster-item"><strong>#9 Marshall "түвшин" Nguyen</strong></div>
+              <div class="roster-item"><strong>#10 Connor "Kayuktak" Evans</strong></div>
+              <div class="roster-item"><strong>#11 Ren "Golden Boy" Schlosser</strong></div>
+              <div class="roster-item"><strong>#12 Kenji "Kaizen" Shannon</strong></div>
+              <div class="roster-item"><strong>#13 Michael "Love" Watson</strong></div>
+              <div class="roster-item"><strong>#14 Mason "Divino" Panelo</strong></div>
+            </div>
+            <div class="roster-col" role="listitem">
+              <div class="roster-heading">Alpha Class</div>
+              <div class="roster-item" style="color: rgba(255,255,255,0.25); font-style: italic;">Coming Soon...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alumni -->
+      <section class="section section-dark" style="padding-top: 2rem;" aria-labelledby="alumni-heading">
+        <div class="section-inner">
+          <p class="section-tag">Class of 2026</p>
+          <h2 id="alumni-heading">Alumni</h2>
+          <div class="rule" role="presentation"></div>
+
+          <div class="alumni-entry">
+            <div>
+              <div class="alumni-number" aria-hidden="true">#3</div>
+              <div class="alumni-name">John "ธาราทิพย์" Conlan</div>
+              <div class="alumni-degree">B.S. Environmental Science · Forestry & GIS Minor</div>
+              <p>Congratulations to our Founding Father, John Conlan. From helping lay the foundation of ATAU as one of the founding fathers to serving as Vice President, John embodied everything this brotherhood stands for. His leadership spanned the WSU Wrestling program and the Environmental Sustainability Alliance. As he sets his sights on a career in environmental pollution cleanup, the earth is in good hands. We are so proud of you, brother.</p>
+            </div>
+            <div style="background: var(--ink-mid); border: 1px solid rgba(63,232,176,0.12); overflow: hidden; min-height: 260px;">
+              <img src="images/Green Video Letters Large.png" alt="Alpha Theta Tau" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" />
+            </div>
+          </div>
+
+          <div class="alumni-entry reverse">
+            <div style="background: var(--ink-mid); border: 1px solid rgba(63,232,176,0.12); overflow: hidden; min-height: 260px;">
+              <img src="images/Green Video Letters Large.png" alt="Alpha Theta Tau" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" />
+            </div>
+            <div>
+              <div class="alumni-number" aria-hidden="true">#4</div>
+              <div class="alumni-name">Nicolas "Hephaeston" DeJesus</div>
+              <div class="alumni-degree">B.S. Architecture · Continuing to M.Arch at WSU</div>
+              <p>Congratulations to Founding Father Nicolas DeJesus. Nic has been a pillar of the APIDA community — Co-Cultural Chair and Secretary for FASA, Secretary for APASC, and Secretary for ATAU. From founding ATAU to leaving his mark across the APIDA community, Nic built a lasting legacy at WSU. He will continue his journey pursuing his Master's degree in Architecture. We are endlessly proud of you, brother.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article><!-- /#page-brotherhood -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         PAGE: SUPPORT (Donation & Referral)
+         ══════════════════════════════════════════════════════ -->
+    <article class="page" id="page-support" aria-labelledby="support-title">
+
+      <!-- Donation -->
+      <section class="section section-dark" aria-labelledby="support-title">
+        <div class="section-inner">
+          <div class="donate-layout">
+
+            <!-- Donation Widget -->
+            <div>
+              <div class="donate-panel" aria-label="Donation form">
+                <div class="donate-label">Donations to Alpha Theta Tau</div>
+                <div class="donate-type" role="group" aria-label="Donation frequency">
+                  <button class="type-btn active" onclick="setType(this)">One Time</button>
+                  <button class="type-btn" onclick="setType(this)">Monthly</button>
+                  <button class="type-btn" onclick="setType(this)">Yearly</button>
+                </div>
+                <div class="donate-options" role="group" aria-label="Donation amount">
+                  <button class="donate-btn" onclick="setAmount(this)">$1</button>
+                  <button class="donate-btn" onclick="setAmount(this)">$5</button>
+                  <button class="donate-btn" onclick="setAmount(this)">$10</button>
+                  <button class="donate-btn" onclick="setAmount(this)">Other</button>
+                </div>
+                <a href="#" class="btn-primary" style="width: 100%; text-align: center; display: block; margin-bottom: 0.75rem;">Continue</a>
+                <p style="font-size: 0.72rem; color: rgba(255,255,255,0.25); text-align: center; margin: 0;">Secure donation processing</p>
+              </div>
+            </div>
+
+            <!-- Legacy Fund Copy -->
+            <div>
+              <p class="section-tag">ATAU Legacy Fund</p>
+              <h2 id="support-title">Push for Change</h2>
+              <div class="rule" role="presentation"></div>
+              <p>
+                Join the ATAU Legacy Fund and become a founding force behind a movement that is just
+                beginning. Your commitment goes beyond financial support — it is an investment in a
+                brotherhood built on authenticity, compassion, and the courage to champion men's
+                mental health at every level.
+              </p>
+              <p>
+                Every contribution directly fuels the programs, outreach, and initiatives that make
+                our mission real. From mental health advocacy on campus to community events that
+                unite and uplift, your generosity powers the work that sets Alpha Theta Tau apart.
+              </p>
+              <p>
+                When thirteen men gathered at Washington State University on November 3rd, 2025,
+                they laid the foundation for something greater than themselves. The ATAU Legacy Fund
+                honors that founding spirit by ensuring that every generation of brothers has the
+                resources, opportunities, and platform to carry that mission forward — and to bring
+                new chapters of Alpha Theta Tau to life across the country.
+              </p>
+              <p style="font-style: italic; color: rgba(255,255,255,0.4); font-family: 'Cormorant Garamond', serif; font-size: 1rem;">
+                Give today and stand with us — not just as a donor, but as a cornerstone of the
+                Alpha Theta Tau legacy.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Refer a Brother -->
+      <section class="section" style="background: var(--ivory-light);" aria-labelledby="refer-heading2">
+        <div class="section-inner" style="max-width: 680px;">
+          <p class="section-tag">Membership</p>
+          <h2 id="refer-heading2">Refer a Future Brother</h2>
+          <div class="rule" role="presentation"></div>
+          <p>Know someone who would make a great candidate? We'll reach out to him — whether he's currently attending or planning to attend Washington State University.</p>
+
+          <div class="form-wrap" style="margin-top: 2rem;" role="form" aria-label="Referral form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ref-name">Your Name</label>
+                <input type="text" id="ref-name" name="ref-name" autocomplete="name" placeholder="Your name" />
+              </div>
+              <div class="form-group">
+                <label for="ref-email">Your Email</label>
+                <input type="email" id="ref-email" name="ref-email" autocomplete="email" placeholder="you@wsu.edu" />
+              </div>
+            </div>
+            <div class="form-row" style="margin-top: 1rem;">
+              <div class="form-group">
+                <label for="cand-name">Candidate's Name</label>
+                <input type="text" id="cand-name" name="cand-name" placeholder="Candidate's name" />
+              </div>
+              <div class="form-group">
+                <label for="cand-contact">Candidate's Contact</label>
+                <input type="text" id="cand-contact" name="cand-contact" placeholder="Email or phone" />
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="refer-note">Why would he be a great brother?</label>
+              <textarea id="refer-note" name="refer-note" placeholder="Tell us a bit about him..."></textarea>
+            </div>
+            <button type="button" class="btn-primary" onclick="handleReferral()" style="margin-top: 0.5rem;">Refer an ATAU</button>
+            <p id="refer-success" style="display:none; margin-top: 0.75rem; font-size: 0.88rem; color: var(--jade-deep); font-style: italic;">
+              Thank you! We'll reach out to him soon.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section> id="join-form" class="form-section">
+        <!-- Form Here (NEW!) -->
+      </section>
+
+    </article><!-- /#page-support -->
+
+
+  </main><!-- /#main-content -->
+
+
+  <!-- ════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">ΑΘΤ</div>
+        <div class="footer-motto">Per Aspera Ad Astra</div>
+        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.25); margin-top: 0.75rem;">Washington State University<br/>Pullman, WA</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Links</div>
+        <ul class="footer-links-list">
+          <li><a href="#" onclick="showPage('support')">Contact Us</a></li>
+          <li><a href="#" onclick="showPage('schedule')">News</a></li>
+          <li><a href="#">Apparel</a></li>
+          <li><a href="#" onclick="showPage('support')">Support</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Social Media</div>
+        <ul class="footer-links-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">#ATAU</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025–2026 Alpha Theta Tau · WSU Chapter. All rights reserved.</span>
+      <span class="footer-copy">Per Aspera Ad Astra</span>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

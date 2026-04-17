@@ -1,0 +1,68 @@
+/* ============================================================
+   footer.css file makes the footer at the bottom of every page 
+   look the way it does — the three columns of links, the logo and 
+   motto on the left, and the copyright line at the very bottom.
+   ============================================================ */
+
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(63, 232, 176, 0.12);
+  padding: 3rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--jade);
+  letter-spacing: 0.06em;
+}
+
+.footer-motto {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 0.3rem;
+}
+
+.footer-col-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 0.75rem;
+}
+
+.footer-links-list { list-style: none; }
+.footer-links-list li { margin-bottom: 0.4rem; }
+.footer-links-list a {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links-list a:hover { color: var(--jade); }
+
+.footer-bottom {
+  max-width: 1060px;
+  margin: 2rem auto 0;
+  border-top: 1px solid rgba(143, 165, 165, 0.1);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy { font-size: 0.78rem; color: rgba(255, 255, 255, 0.2); }
